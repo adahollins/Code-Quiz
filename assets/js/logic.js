@@ -5,12 +5,18 @@
 
 var timer = document.querySelector("#time");
 var buttonStart = document.querySelector("#start");
-var seconds = 75;
+var seconds = 15;
 
+// Timer starts after clicking start
 buttonStart.addEventListener("click", function() {
-    let i = 75;
+    function setTimerText() {
+        timer.textContent = i;
+    }
 
-    setInterval(function() {
-        console.log(--i);
-    }, 75);
+    let i = 15;
+
+    var x = setInterval(function() {
+        if (i <= 1) clearInterval(x);
+        setTimerText(i--);
+    }, 1000);
 });
