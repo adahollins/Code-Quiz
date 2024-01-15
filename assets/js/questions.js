@@ -62,15 +62,14 @@ function makeButtons() {
 buttons()
 
 var buttonsOne = document.querySelector("#choices");
-var buttonCorrect = document.querySelector("#choices")[2];
+const buttonCorrect = '3. alerts';
 
     buttonsOne.addEventListener("click", function(event) {
-        var element = event.target;
-    
-        if (element.matches(buttonCorrect)) {
+
+        if (buttonCorrect) {
             console.log("Correct!");
         } else {
             console.log("Wrong!");
-        };
+    };
     });
 }; 
