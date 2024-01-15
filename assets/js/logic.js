@@ -6,4 +6,3 @@
 var timer = document.querySelector("#time");
 var buttonStart = document.querySelector("#start");
 
-setInterval()

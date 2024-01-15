@@ -19,9 +19,10 @@
 var buttonQuestions = document.querySelector("#question-title");
 var buttonAnswers = document.querySelector("#choices");
 var buttonStart = document.querySelector("#start");
+var buttonFeedback = document.querySelector("#feeback");
 
 // Adds first question
-showQuestionOne();
+questionOne();
 
 // Hides quiz content and shows question content
 buttonStart.addEventListener("click", function(event) {
@@ -39,15 +40,37 @@ buttonStart.addEventListener("click", function(event) {
 });
 
 // Adds first questions function
-function showQuestionOne() {
+function questionOne() {
     var questionOne = "Commonly used data types DO NOT INCLUDE:";
-    var answersOne = ["1. strings", "2. boolean", "3. alerts", "4. numbers"];
 
     buttonQuestions.textContent += questionOne;
 
-    function makeButtons() {
-        for (var i = 0; i < answersOne.length; i++) {
-            document.getElementById("choices").innerHTML += "<button>" + answersOne[i] + "</button>";
-        }
-    } makeButtons()
+    makeButtons()
+    
 };
+
+// Buttons for question One
+function makeButtons() {
+    var answersOne = ["1. strings", "2. boolean", "3. alerts", "4. numbers"];
+
+    function buttons() {
+        for (var i = 0; i < answersOne.length; i++) {
+        document.getElementById("choices").innerHTML += "<button>" + answersOne[i] + "</button>";
+    }
+};
+
+buttons()
+
+var buttonsOne = document.querySelector("#choices");
+var buttonCorrect = document.querySelector("#choices")[2];
+
+    buttonsOne.addEventListener("click", function(event) {
+        var element = event.target;
+    
+        if (element.matches(buttonCorrect)) {
+            console.log("Correct!");
+        } else {
+            console.log("Wrong!");
+        };
+    });
+}; 
