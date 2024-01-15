@@ -5,4 +5,12 @@
 
 var timer = document.querySelector("#time");
 var buttonStart = document.querySelector("#start");
+var seconds = 75;
 
+buttonStart.addEventListener("click", function() {
+    let i = 75;
+
+    setInterval(function() {
+        console.log(--i);
+    }, 75);
+});
