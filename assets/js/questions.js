@@ -37,6 +37,7 @@ buttonStart.addEventListener("click", function(event) {
     } else {
         startPage.style.display = 'none';
         questionPage.style.display = 'block';
+        localStorage.removeItem("points");
     }
 });
 
@@ -103,32 +104,39 @@ var points = 0;
     buttonCorrect.addEventListener("click", function(event) {
         console.log("Correct!");
         audioRight.play();
-        localStorage.setItem("points", points + 10);
+        localStorage.setItem("points", JSON.stringify(points + 10));
         showEndScreen();
-        clearInterval(timer);
+        timer.style.display = 'none';
     });
 
     buttonWrongOne.addEventListener("click", function(event) {
         console.log("Wrong!");
         audioWrong.play();
-        localStorage.setItem("points", points);
+        localStorage.setItem("points", JSON.stringify(points));
         showEndScreen();
+        timer.style.display = 'none';
     });
 
     buttonWrongTwo.addEventListener("click", function(event) {
         console.log("Wrong!");
         audioWrong.play();
-        localStorage.setItem("points", points);
+        localStorage.setItem("points", JSON.stringify(points));
         showEndScreen();
+        timer.style.display = 'none';
     });
 
     buttonWrongThree.addEventListener("click", function(event) {
         console.log("Wrong!");
         audioWrong.play();
-        localStorage.setItem("points", points);
+        localStorage.setItem("points", JSON.stringify(points));
         showEndScreen();
+        timer.style.display = 'none';
     });
 }; 
+
+function makeButtonsTwo() {
+
+};
 
 //Shows endscreen after the last question
 function showEndScreen() {
