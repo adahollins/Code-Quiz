@@ -20,6 +20,7 @@ var buttonQuestions = document.querySelector("#question-title");
 var buttonAnswers = document.querySelector("#choices");
 var buttonStart = document.querySelector("#start");
 var buttonFeedback = document.querySelector("#feeback");
+var timer = document.querySelector("#time");
 
 // Adds first question
 questionOne();
@@ -37,6 +38,20 @@ buttonStart.addEventListener("click", function(event) {
         startPage.style.display = 'none';
         questionPage.style.display = 'block';
     }
+});
+
+// Timer starts after clicking start
+buttonStart.addEventListener("click", function() {
+    function setTimerText() {
+        timer.textContent = i;
+    }
+
+    let i = 30;
+
+    var countdown = setInterval(function() {
+        if (i <= 1) clearInterval(countdown);
+        setTimerText(i--);
+    }, 1000);
 });
 
 // Adds first questions function
@@ -84,30 +99,48 @@ const buttonWrongThree = document.querySelector("#wrong-three");
 const audioWrong = new Audio("assets/sfx/incorrect.wav");
 const audioRight = new Audio("assets/sfx/correct.wav");
 var points = 0;
-var timer = document.querySelector("#time");
 
     buttonCorrect.addEventListener("click", function(event) {
         console.log("Correct!");
         audioRight.play();
-        localStorage.setItem("points", points + 1);
+        localStorage.setItem("points", points + 10);
+        showEndScreen();
+        clearInterval(timer);
     });
 
     buttonWrongOne.addEventListener("click", function(event) {
         console.log("Wrong!");
         audioWrong.play();
         localStorage.setItem("points", points);
+        showEndScreen();
     });
 
     buttonWrongTwo.addEventListener("click", function(event) {
         console.log("Wrong!");
         audioWrong.play();
         localStorage.setItem("points", points);
+        showEndScreen();
     });
 
     buttonWrongThree.addEventListener("click", function(event) {
         console.log("Wrong!");
         audioWrong.play();
         localStorage.setItem("points", points);
+        showEndScreen();
     });
 }; 
 
+//Shows endscreen after the last question
+function showEndScreen() {
+    var endPage = document.querySelector("#end-screen");
+    var displaySettings = endPage.style.display;
+    var questionPage = document.querySelector("#questions");
+
+    if (displaySettings == 'none') {
+        endPage.style.display = 'none';
+        questionPage.style.display = 'block';
+    } else {
+        endPage.style.display = 'block';
+        questionPage.style.display = 'none';
+    }
+};

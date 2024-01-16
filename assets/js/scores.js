@@ -4,5 +4,4 @@
 
 // Give option to clear all with a button
 
-var scores = ;
-
+var highscore = document.querySelector("#highscores");
