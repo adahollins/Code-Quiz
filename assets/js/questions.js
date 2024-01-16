@@ -45,31 +45,57 @@ function questionOne() {
 
     buttonQuestions.textContent += questionOne;
 
-    makeButtons()
+    makeButtonsOne()
     
 };
 
 // Buttons for question One
-function makeButtons() {
-    var answersOne = ["1. strings", "2. boolean", "3. alerts", "4. numbers"];
+function makeButtonsOne() {
+    var answersWrongOne = "1. strings";
+    var answersWrongTwo = "2. boolean";
+    var answersCorrect = "3. alerts";
+    var answersWrongThree = "4. numbers";
 
-    function buttons() {
-        for (var i = 0; i < answersOne.length; i++) {
-        document.getElementById("choices").innerHTML += "<button>" + answersOne[i] + "</button>";
-    }
-};
-
-buttons()
-
-var buttonsOne = document.querySelector("#choices");
-const buttonCorrect = '3. alerts';
-
-    buttonsOne.addEventListener("click", function(event) {
-
-        if (buttonCorrect) {
-            console.log("Correct!");
-        } else {
-            console.log("Wrong!");
+    function makeButtonWrongOne() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-one'>" + answersWrongOne + "</button>";
     };
+
+    function makeButtonWrongTwo() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-two'>" + answersWrongTwo + "</button>";
+    };
+
+    function makeButtonRight() {
+        document.getElementById("choices").innerHTML += "<button id='correct'>" + answersCorrect + "</button>";
+    };
+
+    function makeButtonWrongThree() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-three'>" + answersWrongThree + "</button>";
+    };
+
+makeButtonWrongOne()
+makeButtonWrongTwo()
+makeButtonRight()
+makeButtonWrongThree()
+
+const buttonCorrect = document.querySelector("#correct");
+const buttonWrongOne = document.querySelector("#wrong-one");
+const buttonWrongTwo = document.querySelector("#wrong-two");
+const buttonWrongThree = document.querySelector("#wrong-three");
+
+    buttonCorrect.addEventListener("click", function(event) {
+        console.log("Correct!");
+    });
+
+    buttonWrongOne.addEventListener("click", function(event) {
+        console.log("Wrong!");
+    });
+
+    buttonWrongTwo.addEventListener("click", function(event) {
+        console.log("Wrong!");
+    });
+
+    buttonWrongThree.addEventListener("click", function(event) {
+        console.log("Wrong!");
     });
 }; 
+

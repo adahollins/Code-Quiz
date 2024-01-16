@@ -13,7 +13,7 @@ buttonStart.addEventListener("click", function() {
         timer.textContent = i;
     }
 
-    let i = 15;
+    let i = 30;
 
     var x = setInterval(function() {
         if (i <= 1) clearInterval(x);
