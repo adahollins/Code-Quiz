@@ -81,21 +81,33 @@ const buttonCorrect = document.querySelector("#correct");
 const buttonWrongOne = document.querySelector("#wrong-one");
 const buttonWrongTwo = document.querySelector("#wrong-two");
 const buttonWrongThree = document.querySelector("#wrong-three");
+const audioWrong = new Audio("assets/sfx/incorrect.wav");
+const audioRight = new Audio("assets/sfx/correct.wav");
+var points = 0;
+var timer = document.querySelector("#time");
 
     buttonCorrect.addEventListener("click", function(event) {
         console.log("Correct!");
+        audioRight.play();
+        localStorage.setItem("points", points + 1);
     });
 
     buttonWrongOne.addEventListener("click", function(event) {
         console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", points);
     });
 
     buttonWrongTwo.addEventListener("click", function(event) {
         console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", points);
     });
 
     buttonWrongThree.addEventListener("click", function(event) {
         console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", points);
     });
 }; 
 

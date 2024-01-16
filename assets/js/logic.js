@@ -6,6 +6,9 @@
 var timer = document.querySelector("#time");
 var buttonStart = document.querySelector("#start");
 var seconds = 15;
+var buttonIncorrectOne = document.querySelector("#wrong-one");
+var buttonIncorrectTwo = document.querySelector("#wrong-two");
+var buttonIncorrectThree = document.querySelector("#wrong-three");
 
 // Timer starts after clicking start
 buttonStart.addEventListener("click", function() {
@@ -15,8 +18,10 @@ buttonStart.addEventListener("click", function() {
 
     let i = 30;
 
-    var x = setInterval(function() {
-        if (i <= 1) clearInterval(x);
+    var countdown = setInterval(function() {
+        if (i <= 1) clearInterval(countdown);
         setTimerText(i--);
     }, 1000);
 });
+
+buttonIncorrectOne
