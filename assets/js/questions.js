@@ -5,17 +5,6 @@
 // When it's incorrect, subtract time, 'Wrong' and sound
 
 
-// Question: Commonly used data types DO NOT INCLUDE:
-// Answers: strings , boolean , alerts , numbers
-// Question: The conditon in an if / else statment is enclosed within _____ .
-// Answers: quotes, burly brackets , parenthesis , square brackets
-// Question: Arrays in JavaScript cna be stored in _____ .
-// Answers: number of strings , other arrays, booleans, all the above
-// Question: String values must be enclosed in ______ when being assigned to variables.
-// Answers: commas , curly brackets , quotes , parenthesis
-// Question: A very useful tool during development and debugging for printing content in the debugger is:
-// Answers: Javascript , terminal / bash ,  for loops , console.log
-
 var buttonQuestions = document.querySelector("#question-title");
 var buttonAnswers = document.querySelector("#choices");
 var buttonStart = document.querySelector("#start");
@@ -37,7 +26,7 @@ buttonStart.addEventListener("click", function(event) {
     } else {
         startPage.style.display = 'none';
         questionPage.style.display = 'block';
-        localStorage.removeItem("points");
+        localStorage.setItem('points', 0);
     }
 });
 
@@ -57,9 +46,9 @@ buttonStart.addEventListener("click", function() {
 
 // Adds first questions function
 function questionOne() {
-    var questionOne = "Commonly used data types DO NOT INCLUDE:";
+    var question = "Commonly used data types DO NOT INCLUDE:";
 
-    buttonQuestions.textContent += questionOne;
+    buttonQuestions.textContent += question;
 
     makeButtonsOne()
     
@@ -99,12 +88,313 @@ const buttonWrongTwo = document.querySelector("#wrong-two");
 const buttonWrongThree = document.querySelector("#wrong-three");
 const audioWrong = new Audio("assets/sfx/incorrect.wav");
 const audioRight = new Audio("assets/sfx/correct.wav");
-var points = 0;
+let points = JSON.parse(localStorage.getItem('points'));
 
     buttonCorrect.addEventListener("click", function(event) {
         console.log("Correct!");
         audioRight.play();
         localStorage.setItem("points", JSON.stringify(points + 10));
+        questionTwo();
+    });
+
+    buttonWrongOne.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify(points));
+        questionTwo();
+    });
+
+    buttonWrongTwo.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify(points));
+        questionTwo();
+    });
+
+    buttonWrongThree.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify(points));
+        questionTwo();
+    });
+}; 
+
+// Question Two
+function questionTwo() {
+    var question = "The conditon in an if / else statment is enclosed within _____ .";
+
+    buttonQuestions.innerHTML = '';
+    buttonQuestions.textContent += question;
+
+    makeButtonsTwo()
+};
+
+function makeButtonsTwo() {
+    buttonAnswers.innerHTML = '';
+
+    var answersWrongOne = "1. quotes";
+    var answersCorrect = "2. curly brackets";
+    var answersWrongTwo = "3. parenthesis";
+    var answersWrongThree = "4. square brackets";
+
+    function makeButtonWrongOne() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-one'>" + answersWrongOne + "</button>";
+    };
+
+    function makeButtonWrongTwo() {
+        document.getElementById("choices").innerHTML += "<button id='correct'>" + answersCorrect + "</button>";
+    };
+
+    function makeButtonRight() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-two'>" + answersWrongTwo + "</button>";
+    };
+
+    function makeButtonWrongThree() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-three'>" + answersWrongThree + "</button>";
+    };
+
+makeButtonWrongOne()
+makeButtonWrongTwo()
+makeButtonRight()
+makeButtonWrongThree()
+
+const buttonCorrect = document.querySelector("#correct");
+const buttonWrongOne = document.querySelector("#wrong-one");
+const buttonWrongTwo = document.querySelector("#wrong-two");
+const buttonWrongThree = document.querySelector("#wrong-three");
+const audioWrong = new Audio("assets/sfx/incorrect.wav");
+const audioRight = new Audio("assets/sfx/correct.wav");
+let points = JSON.parse(localStorage.getItem('points'));
+
+    buttonCorrect.addEventListener("click", function(event) {
+        console.log("Correct!");
+        audioRight.play();
+        localStorage.setItem("points", JSON.stringify(points + 10));
+        questionThree();
+    });
+
+    buttonWrongOne.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify(points));
+        questionThree();
+    });
+
+    buttonWrongTwo.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify(points));
+        questionThree();
+    });
+
+    buttonWrongThree.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify(points));
+        questionThree();
+    });
+};
+
+//Question Three
+function questionThree() {
+    var question = "Arrays in JavaScript can be stored in _____ .";
+
+    buttonQuestions.innerHTML = '';
+    buttonQuestions.textContent += question;
+
+    makeButtonsThree()
+};
+
+function makeButtonsThree() {
+    buttonAnswers.innerHTML = '';
+
+    var answersWrongOne = "1. number of strings";
+    var answersWrongTwo = "2. other arrays";
+    var answersWrongThree = "3. booleans";
+    var answersCorrect = "4. all the above";
+
+    function makeButtonWrongOne() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-one'>" + answersWrongOne + "</button>";
+    };
+
+    function makeButtonWrongTwo() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-two'>" + answersWrongTwo + "</button>";
+    };
+
+    function makeButtonRight() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-three'>" + answersWrongThree + "</button>";
+    };
+
+    function makeButtonWrongThree() {
+        document.getElementById("choices").innerHTML += "<button id='correct'>" + answersCorrect + "</button>";
+    };
+
+makeButtonWrongOne()
+makeButtonWrongTwo()
+makeButtonRight()
+makeButtonWrongThree()
+
+const buttonCorrect = document.querySelector("#correct");
+const buttonWrongOne = document.querySelector("#wrong-one");
+const buttonWrongTwo = document.querySelector("#wrong-two");
+const buttonWrongThree = document.querySelector("#wrong-three");
+const audioWrong = new Audio("assets/sfx/incorrect.wav");
+const audioRight = new Audio("assets/sfx/correct.wav");
+
+    buttonCorrect.addEventListener("click", function(event) {
+        console.log("Correct!");
+        audioRight.play();
+        localStorage.setItem("points", JSON.stringify("points" + 10));
+        questionFour();
+    });
+
+    buttonWrongOne.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify("points"));
+        questionFour();
+    });
+
+    buttonWrongTwo.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify("points"));
+        questionFour();
+    });
+
+    buttonWrongThree.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify("points"));
+        questionFour();
+    });
+};
+
+//Question Four
+function questionFour() {
+    var question = "String values must be enclosed in ______ when being assigned to variables.";
+
+    buttonQuestions.innerHTML = '';
+    buttonQuestions.textContent += question;
+
+    makeButtonsFour()
+};
+
+function makeButtonsFour() {
+    buttonAnswers.innerHTML = '';
+
+    var answersWrongOne = "1. commas";
+    var answersWrongTwo = "2. curly brackets";
+    var answersCorrect = "3. quotes";
+    var answersWrongThree = "4. parenthesis";
+
+    function makeButtonWrongOne() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-one'>" + answersWrongOne + "</button>";
+    };
+
+    function makeButtonWrongTwo() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-two'>" + answersWrongTwo + "</button>";
+    };
+
+    function makeButtonRight() {
+        document.getElementById("choices").innerHTML += "<button id='correct'>" + answersCorrect + "</button>";
+    };
+
+    function makeButtonWrongThree() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-three'>" + answersWrongThree + "</button>";
+    };
+
+makeButtonWrongOne()
+makeButtonWrongTwo()
+makeButtonRight()
+makeButtonWrongThree()
+
+const buttonCorrect = document.querySelector("#correct");
+const buttonWrongOne = document.querySelector("#wrong-one");
+const buttonWrongTwo = document.querySelector("#wrong-two");
+const buttonWrongThree = document.querySelector("#wrong-three");
+const audioWrong = new Audio("assets/sfx/incorrect.wav");
+const audioRight = new Audio("assets/sfx/correct.wav");
+
+    buttonCorrect.addEventListener("click", function(event) {
+        console.log("Correct!");
+        audioRight.play();
+        localStorage.setItem("points", JSON.stringify("points" + 10));
+        questionFive();
+    });
+
+    buttonWrongOne.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify("points"));
+        questionFive();
+    });
+
+    buttonWrongTwo.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify("points"));
+        questionFive();
+    });
+
+    buttonWrongThree.addEventListener("click", function(event) {
+        console.log("Wrong!");
+        audioWrong.play();
+        localStorage.setItem("points", JSON.stringify("points"));
+        questionFive();
+    });
+};
+
+// Question Five
+function questionFive() {
+    var question = "A very useful tool during development and debugging for printing content in the debugger is:";
+
+    buttonQuestions.innerHTML = '';
+    buttonQuestions.textContent += question;
+
+    makeButtonsFive()
+};
+
+function makeButtonsFive() {
+    buttonAnswers.innerHTML = '';
+
+    var answersWrongOne = "1. Javascript";
+    var answersWrongTwo = "2. terminal / bash";
+    var answersWrongThree = "3. for loop";
+    var answersCorrect = "4. console.log";
+
+    function makeButtonWrongOne() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-one'>" + answersWrongOne + "</button>";
+    };
+
+    function makeButtonWrongTwo() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-two'>" + answersWrongTwo + "</button>";
+    };
+
+    function makeButtonRight() {
+        document.getElementById("choices").innerHTML += "<button id='wrong-three'>" + answersWrongThree + "</button>";
+    };
+
+    function makeButtonWrongThree() {
+        document.getElementById("choices").innerHTML += "<button id='correct'>" + answersCorrect + "</button>";
+    };
+
+makeButtonWrongOne()
+makeButtonWrongTwo()
+makeButtonRight()
+makeButtonWrongThree()
+
+const buttonCorrect = document.querySelector("#correct");
+const buttonWrongOne = document.querySelector("#wrong-one");
+const buttonWrongTwo = document.querySelector("#wrong-two");
+const buttonWrongThree = document.querySelector("#wrong-three");
+const audioWrong = new Audio("assets/sfx/incorrect.wav");
+const audioRight = new Audio("assets/sfx/correct.wav");
+
+    buttonCorrect.addEventListener("click", function(event) {
+        console.log("Correct!");
+        audioRight.play();
+        localStorage.setItem("points", JSON.stringify("points" + 10));
         showEndScreen();
         timer.style.display = 'none';
     });
@@ -112,7 +402,7 @@ var points = 0;
     buttonWrongOne.addEventListener("click", function(event) {
         console.log("Wrong!");
         audioWrong.play();
-        localStorage.setItem("points", JSON.stringify(points));
+        localStorage.setItem("points", JSON.stringify("points"));
         showEndScreen();
         timer.style.display = 'none';
     });
@@ -120,7 +410,7 @@ var points = 0;
     buttonWrongTwo.addEventListener("click", function(event) {
         console.log("Wrong!");
         audioWrong.play();
-        localStorage.setItem("points", JSON.stringify(points));
+        localStorage.setItem("points", JSON.stringify("points"));
         showEndScreen();
         timer.style.display = 'none';
     });
@@ -128,14 +418,10 @@ var points = 0;
     buttonWrongThree.addEventListener("click", function(event) {
         console.log("Wrong!");
         audioWrong.play();
-        localStorage.setItem("points", JSON.stringify(points));
+        localStorage.setItem("points", JSON.stringify("points"));
         showEndScreen();
         timer.style.display = 'none';
     });
-}; 
-
-function makeButtonsTwo() {
-
 };
 
 //Shows endscreen after the last question
